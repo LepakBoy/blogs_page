@@ -1,3 +1,4 @@
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -13,8 +14,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+          slideIn:{
+            "0%" : {transform: "translateX(-10%)", opacity: "0"},
+            "100%" : {transform: "translateX(0)", opacity: "1"}
+          }
+        },
+        animation: {
+          slideIn: "slideIn 0.3s ease-out forwards"
+        }
+      }
     },
-  },
+  
   plugins: [],
 };
 export default config;
