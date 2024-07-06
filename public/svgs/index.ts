@@ -1,1 +1,5 @@
 export {default as ArrowRightIcon} from "./arrow-right.svg"
+export {default as YoutubeIcon} from "./youtube.svg"
+export {default as FacebookIcon} from "./facebook.svg"
+export {default as TwitterIcon} from "./twitter.svg"
+export {default as InstagramIcon} from "./instagram.svg"
