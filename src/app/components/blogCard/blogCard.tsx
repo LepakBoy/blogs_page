@@ -15,7 +15,7 @@ export default function BlogCard() {
           </h6>
           <Link
             href="/"
-            className="items-center w-[142px] font-bold text-slate-50 text-sm drop-shadow-md hidden group-hover:flex group-hover:animate-slideIn hover:cursor-pointer justify-between"
+            className="items-center w-[142px] font-bold text-slate-50 text-sm drop-shadow-md hidden group-hover:flex group-hover:animate-slideIn justify-between"
           >
             READ MORE
             <ArrowRightIcon className="text-slate-50 text-4xl stroke-2" />
