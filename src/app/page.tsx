@@ -24,6 +24,11 @@ export default function Home() {
         <BlogCard />
         <BlogCard />
       </section>
+      <div className="flex justify-center">
+        <button className="my-20 mx-auto bg-emerald-800 py-3 px-7 text-slate-100 font-bold text-lg rounded-full">
+          older post
+        </button>
+      </div>
     </main>
   );
 }

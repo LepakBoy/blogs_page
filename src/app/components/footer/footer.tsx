@@ -5,7 +5,7 @@ import {
   InstagramIcon,
   TwitterIcon,
   YoutubeIcon,
-} from '../../../public/svgs';
+} from '../../../../public/svgs';
 
 export default function Footer() {
   return (
