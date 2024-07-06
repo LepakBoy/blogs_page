@@ -4,7 +4,7 @@ import { ArrowRightIcon } from '../../../../public/svgs';
 
 export default function BlogCard() {
   return (
-    <div className="card group p-6 rounded-lg relative bg-[url('/images/photo.jpg')] h-[440px] bg-origin-border hover:bg-origi bg-center">
+    <div className="card group h-[400px] p-6 rounded-lg relative bg-[url('/images/photo.jpg')] bg-origin-border hover:bg-origin-border bg-center">
       <div className="absolute bottom-[18px] w-full left-0 right-0 p-3">
         <h3 className="mb-[12px] font-extrabold text-3xl text-slate-50 drop-shadow-md">
           Perfect for lightweight applications where bulk is undesirable

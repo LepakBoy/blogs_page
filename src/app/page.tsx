@@ -5,10 +5,10 @@ export default function Home() {
   return (
     <main>
       <div>
-        <h1 className="text-8xl font-extrabold text-center py-14">
+        <h1 className="text-6xl md:text-8xl font-extrabold text-center py-9 md:py-14">
           Life styles
         </h1>
-        <h3 className="text-center mx-auto font-bold text-4xl py-12 w-[440px]">
+        <h3 className="text-center mx-auto font-bold text-2xl md:text-4xl py-12 w-[240px] md:w-[440px]">
           Not just an ordinary blog by{' '}
           <Link
             href="/"
