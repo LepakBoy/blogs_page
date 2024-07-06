@@ -6,13 +6,13 @@ import { archiveList, footerLabels } from '@/app/static/footerArchive';
 
 export default function FooterLink() {
   return (
-    <div className="py-12 flex border-t-2 border-solid border-stone-900">
+    <div className="py-12 block md:flex border-t-2 border-solid border-stone-900">
       <div className="w-1/2">
-        <h3 className="text-xl font-bold mb-5">
+        <h3 className="text-xl font-bold mb-2 md:mb-5">
           Get a project?
           <span className="underline text-emerald-800">
             <Link
-              href="/"
+              href="/contact"
               className="flex items-center gap-1"
             >
               Let's talk <ArrowRightIcon className="text-4xl stroke-2" />

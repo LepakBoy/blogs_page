@@ -1,7 +1,7 @@
 export const navLinks = [
     {name:"Home", link:"/"},
     {name:"Blogs", link:"/blog"},
-    {name:"Contact", link:"/"},
-    {name:"Admin", link:"/"},
+    {name:"Contact", link:"/contact"},
+    {name:"Admin", link:"/admin"},
 ]
 
