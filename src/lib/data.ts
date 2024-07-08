@@ -11,3 +11,14 @@ export const getPosts = async() => {
         throw new Error("failed to get data")
     }
 }
+
+export const getPostBySlug = async (slug: string) => {
+    try {
+        connectToDb()
+        const post = await Post.findOne({slug})
+        return post
+    } catch (error) {
+        console.log(error)
+        throw new Error("failed to get data")
+    }
+}
