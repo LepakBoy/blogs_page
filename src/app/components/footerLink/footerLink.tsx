@@ -44,7 +44,7 @@ export default function FooterLink() {
         <div className="mt-5 flex gap-2 flex-wrap">
           {footerLabels.map((label) => (
             <LinkComponent
-              href={label.href}
+              href={`${label.href}/${label.name}`}
               key={label.name}
               link={label.name}
             />

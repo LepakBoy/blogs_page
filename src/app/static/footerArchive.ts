@@ -7,13 +7,13 @@ export const archiveList =[
 ]
 
 export const footerLabels =[
-    {name: "blog", href:"/"},
-    {name: "fashion", href:"/"},
-    {name: "food&drink", href:"/"},
-    {name: "holiday", href:"/"},
-    {name: "journal", href:"/"},
-    {name: "style", href:"/"},
-    {name: "travel", href:"/"},
+    {name: "blog", href:"/label"},
+    {name: "fashion", href:"/label"},
+    {name: "food&drink", href:"/label"},
+    {name: "holiday", href:"/label"},
+    {name: "journal", href:"/label"},
+    {name: "style", href:"/label"},
+    {name: "travel", href:"/label"},
 ]
 
 
