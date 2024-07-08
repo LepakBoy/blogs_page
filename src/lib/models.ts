@@ -7,6 +7,10 @@ title: {
     type: String,
     require: true
 },
+header: {
+    type: String,
+    require:true
+},
 desc: {
     type: String,
     require: true

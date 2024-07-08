@@ -5,8 +5,15 @@ import { IPost } from '@/lib/interfaces';
 import moment from 'moment';
 
 export default function BlogCard(props: IPost) {
+  const backgroundImageStyle = {
+    backgroundImage: `url('/images${props.img}')`,
+  };
+
   return (
-    <div className="card group h-[400px] p-6 rounded-lg relative bg-[url('/images/photo.jpg')] bg-origin-border hover:bg-origin-border bg-center">
+    <div
+      style={backgroundImageStyle}
+      className={`card group h-[400px] p-6 rounded-lg relative bg-origin-border hover:bg-origin-border bg-center`}
+    >
       <div className="absolute bottom-[18px] w-full left-0 right-0 p-3">
         <h3 className="mb-[12px] font-extrabold text-3xl text-slate-50 drop-shadow-md">
           {props.title}

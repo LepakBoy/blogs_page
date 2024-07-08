@@ -19,9 +19,7 @@ import { getPosts } from '@/lib/data';
 
 export default async function () {
   // GET DATA POST WITHOUT API
-  const posts = await getPosts();
-
-  // const posts = await getData();
+  const posts = await getPosts(); // const posts = await getData();
   return (
     <div>
       <div>
@@ -40,6 +38,7 @@ export default async function () {
         {posts.map((post) => (
           <BlogCard
             title={post.title}
+            header={post.title}
             desc={post.desc}
             img={post.img}
             slug={post.slug}
