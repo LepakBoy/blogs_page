@@ -43,7 +43,7 @@ export default async function () {
             img={post.img}
             slug={post.slug}
             labels={post.labels}
-            datePost={post.createdAt}
+            datePost={post.datePost as Date}
             key={post.title}
           />
         ))}
