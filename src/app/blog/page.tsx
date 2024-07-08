@@ -1,14 +1,31 @@
 import Link from 'next/link';
 import React from 'react';
 import BlogCard from '../components/blogCard/blogCard';
+import TitlePage from '../components/molecule/titlePage';
+import { getPosts } from '@/lib/data';
 
-export default function () {
+// GET DATA POSTS USING API
+// const getData = async () => {
+//   const res = await fetch('http://localhost:3000/api/blog', {
+//     cache: 'default',
+//   });
+
+//   if (!res.ok) {
+//     throw new Error('something went wrong');
+//   }
+
+//   return res.json();
+// };
+
+export default async function () {
+  // GET DATA POST WITHOUT API
+  const posts = await getPosts();
+
+  // const posts = await getData();
   return (
     <div>
       <div>
-        <h1 className="text-4xl md:text-8xl font-extrabold text-center py-4 md:py-14">
-          Life styles
-        </h1>
+        <TitlePage title="Life Style" />
         <h3 className="text-center mx-auto font-bold text-2xl md:text-4xl py-9 md:py-14 w-[240px] md:w-[440px]">
           Not just an ordinary blog by{' '}
           <Link
@@ -20,10 +37,17 @@ export default function () {
         </h3>
       </div>
       <section className="grid md:grid-cols-2 gap-6">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+        {posts.map((post) => (
+          <BlogCard
+            title={post.title}
+            desc={post.desc}
+            img={post.img}
+            slug={post.slug}
+            labels={post.labels}
+            datePost={new Date()}
+            key={post.title}
+          />
+        ))}
       </section>
       <div className="flex justify-center">
         <button className="my-20 mx-auto bg-emerald-800 py-3 px-7 text-slate-100 font-bold text-lg rounded-full">

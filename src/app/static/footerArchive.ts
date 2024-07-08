@@ -15,3 +15,6 @@ export const footerLabels =[
     {name: "style", href:"/"},
     {name: "travel", href:"/"},
 ]
+
+
+

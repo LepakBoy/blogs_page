@@ -10,12 +10,11 @@ interface INavlink {
 
 export default function Navlink(props: INavlink) {
   const pathName = usePathname();
-  console.log(pathName, 'name');
   return (
     <Link
       href={props.href}
       className={`hover:text-gray-50 ${
-        pathName === props.href && 'text-emerald-800'
+        pathName === props.href && 'text-green-800'
       }`}
     >
       {props.link}
