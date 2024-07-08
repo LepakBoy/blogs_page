@@ -15,3 +15,11 @@ export interface IPostDocument extends IPost, Document{
     createdAt: Date,
     updatedAt: Date
 }
+
+
+export interface IInputForm{
+    name: string;
+    type: string;
+    placeholder: string;
+    value?: string
+}
