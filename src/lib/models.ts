@@ -1,8 +1,7 @@
 import mongoose, {Model} from "mongoose";
-import { IPost } from "./interfaces";
-import { timeStamp } from "console";
+import { IPost, IPostDocument } from "./interfaces";
 
-const postSchema = new mongoose.Schema<IPost>({
+const postSchema = new mongoose.Schema<IPostDocument>({
 title: {
     type: String,
     require: true
@@ -28,10 +27,6 @@ labels: {
     type: [String],
     require: true
 },
-datePost: {
-    type: Date,
-    require: true
-}
 },{
     timestamps: true
 })

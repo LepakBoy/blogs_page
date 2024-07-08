@@ -23,7 +23,7 @@ export default async function () {
   return (
     <div>
       <div>
-        <TitlePage title="Life Style" />
+        <TitlePage title="Insights and Reflections: My Personal Journey" />
         <h3 className="text-center mx-auto font-bold text-2xl md:text-4xl py-9 md:py-14 w-[240px] md:w-[440px]">
           Not just an ordinary blog by{' '}
           <Link
@@ -43,7 +43,7 @@ export default async function () {
             img={post.img}
             slug={post.slug}
             labels={post.labels}
-            datePost={new Date()}
+            datePost={post.createdAt}
             key={post.title}
           />
         ))}

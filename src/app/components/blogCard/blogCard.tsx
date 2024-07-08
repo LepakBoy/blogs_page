@@ -1,10 +1,14 @@
 import Link from 'next/link';
 import React from 'react';
 import { ArrowRightIcon } from '../../../../public/svgs';
-import { IPost } from '@/lib/interfaces';
+import { IPost, IPostDocument } from '@/lib/interfaces';
 import moment from 'moment';
 
-export default function BlogCard(props: IPost) {
+interface IBlogCardProps extends IPost {
+  datePost: Date;
+}
+
+export default function BlogCard(props: IBlogCardProps) {
   const backgroundImageStyle = {
     backgroundImage: `url('/images${props.img}')`,
   };
@@ -34,3 +38,5 @@ export default function BlogCard(props: IPost) {
     </div>
   );
 }
+
+// db.posts.insertOne({ title:"Navigating Jakarta: A Comprehensive Guide to Public Transport in the Indonesian Capital", desct: "lorem awokawoakwaokw", img: "/image5", slug: "blog5", labels: ["transportation"], datePost: "2024-07-08T02:50:17.367Z" } )
