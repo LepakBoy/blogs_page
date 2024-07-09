@@ -7,6 +7,7 @@ export interface IPost{
     img: string,
     slug: string,
     labels: string[] | string,
+    createdAt?: Date,
     datePost?: Date
 }
 

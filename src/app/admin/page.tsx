@@ -6,7 +6,6 @@ export default function AdminPage() {
   return (
     <div>
       <TitlePage title="Post your article" />
-
       <InputForm />
     </div>
   );

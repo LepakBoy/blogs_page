@@ -30,7 +30,7 @@ export default async function SingleBlogPage({
           Lepakboy
         </Link>
         <span className="mx-3">-</span>
-        {moment(post?.datePost).format('MMM DD, YYYY') as string}
+        {moment(post?.createdAt).format('MMM DD, YYYY') as string}
       </h5>
       <h2 className="text-2xl md:text-5xl font-semibold text-center my-4 md:my-7">
         {post?.title}
@@ -45,8 +45,11 @@ export default async function SingleBlogPage({
         width={200}
         alt="blog_image"
       />
-      <div className="first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3 text-base md:text-lg md:w-3/4 mx-auto my-20 md:my-32">
-        <div dangerouslySetInnerHTML={{ __html: post?.desc as string }} />
+      <div className="text-base md:text-lg md:w-3/4 mx-auto my-20 md:my-32">
+        <div
+          className="first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3"
+          dangerouslySetInnerHTML={{ __html: post?.desc as string }}
+        />
       </div>
     </section>
   );
