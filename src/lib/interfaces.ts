@@ -1,4 +1,5 @@
 import { Document } from "mongoose";
+import { ChangeEventHandler } from "react";
 
 export interface IPost{
     title: string,
@@ -6,7 +7,7 @@ export interface IPost{
     desc: string,
     img: string,
     slug: string,
-    labels: string[] | string,
+    labels:  string,
     createdAt?: Date,
     datePost?: Date
 }
@@ -22,5 +23,12 @@ export interface IInputForm{
     name: string;
     type: string;
     placeholder: string;
-    value?: string
+    value?: string;
+    onChange?: ChangeEventHandler<HTMLInputElement> | any;
+    onBlur?:any;
+    error?: string;
+}
+
+export interface IMessageInput {
+    msg?: string
 }

@@ -19,6 +19,7 @@
     "quill": "^2.0.2",
     "react": "^18",
     "react-dom": "^18",
+    "sweetalert2": "^11.12.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {
