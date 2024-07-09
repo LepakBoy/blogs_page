@@ -2,24 +2,30 @@
 import InputFormComponent from '@/app/components/molecule/inputForm';
 import { addPost } from '@/lib/data';
 import { IPost } from '@/lib/interfaces';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Editor as PrimeEditor } from 'primereact/editor';
+import { Editor } from 'primereact/editor';
 
 type FormHandler = (formData: FormData) => void;
 
 export default function InputForm() {
   const ref = useRef<HTMLFormElement>(null);
+  const editorRef = useRef<PrimeEditor>(null);
+  const [paraf, setParaf] = useState('');
 
   const handleWrappedSubmit: FormHandler = (formData: FormData) => {
     const post: IPost = convert(formData);
     addPost(post as IPost);
     ref.current?.reset();
+    editorRef.current?.getQuill().setText('');
   };
 
   const convert = (formData: FormData): IPost => {
     return {
       title: formData.get('title') as string,
       header: formData.get('header') as string,
-      desc: formData.get('desc') as string,
+      // desc: formData.get('desc') as string,
+      desc: paraf,
       img: formData.get('img') as string,
       slug: formData.get('slug') as string,
       labels: formData.get('labels') as string,
@@ -60,13 +66,15 @@ export default function InputForm() {
           placeholder="Labels"
           type="text"
         />
-        <textarea
+        <Editor
           name="desc"
-          placeholder="Your article"
-          className="p-3 border-solid border border-gray-600 rounded-lg"
-          id=""
-          rows={20}
+          // value=""
+          placeholder="Write your awesome article here.."
+          ref={editorRef}
+          onTextChange={(e) => setParaf(e.htmlValue as string)}
+          style={{ height: '460px', fontSize: '16px' }}
         />
+
         <button
           type="submit"
           className="my-20 mx-auto bg-emerald-800 py-3 px-7 text-slate-100 font-bold text-lg rounded-full"

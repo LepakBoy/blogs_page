@@ -18,6 +18,7 @@ export default async function SingleBlogPage({
   const { slug } = params;
   const post = await getData(slug);
   // console.log(post, 'poost');
+
   return (
     <section className="pb-20">
       <TitlePage title={post?.slug as string} />
@@ -44,9 +45,9 @@ export default async function SingleBlogPage({
         width={200}
         alt="blog_image"
       />
-      <p className="first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3 text-base md:text-lg md:w-3/4 mx-auto my-20 md:my-32">
-        {post?.desc}
-      </p>
+      <div className="first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3 text-base md:text-lg md:w-3/4 mx-auto my-20 md:my-32">
+        <div dangerouslySetInnerHTML={{ __html: post?.desc as string }} />
+      </div>
     </section>
   );
 }
