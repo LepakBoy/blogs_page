@@ -4,6 +4,9 @@ import './globals.css';
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import FooterLink from './components/footerLink/footerLink';
+import 'primereact/resources/themes/saga-blue/theme.css'; // or any other theme
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 const libre = Libre_Franklin({ subsets: ['latin'] });
 

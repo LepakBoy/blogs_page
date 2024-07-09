@@ -5,15 +5,27 @@ import { IPost } from '@/lib/interfaces';
 import React, { useRef, useState } from 'react';
 import { Editor as PrimeEditor } from 'primereact/editor';
 import { Editor } from 'primereact/editor';
+import { Chips } from 'primereact/chips';
+import { formMandatory } from '@/helper/blogForm';
 
 type FormHandler = (formData: FormData) => void;
 
 export default function InputForm() {
   const ref = useRef<HTMLFormElement>(null);
   const editorRef = useRef<PrimeEditor>(null);
-  const [paraf, setParaf] = useState('');
+  const [paraf, setParaf] = useState<string>('');
+  const [labels, setLabels] = useState<string[]>([]);
+  const [emptyField, setEmptyField] = useState<string[]>([]);
 
   const handleWrappedSubmit: FormHandler = (formData: FormData) => {
+    //  check for empty field on form
+    // if (formMandatory(convert(formData))) {
+    //   alert('there is empty field');
+    //   setEmptyField(formMandatory(convert(formData)));
+    //   console.log(paraf);
+    //   return;
+    // }
+
     const post: IPost = convert(formData);
     addPost(post as IPost);
     ref.current?.reset();
@@ -24,7 +36,6 @@ export default function InputForm() {
     return {
       title: formData.get('title') as string,
       header: formData.get('header') as string,
-      // desc: formData.get('desc') as string,
       desc: paraf,
       img: formData.get('img') as string,
       slug: formData.get('slug') as string,
@@ -34,10 +45,14 @@ export default function InputForm() {
 
   return (
     <section className="py-16 md:w-3/4 mx-auto">
+      <p className="text-lg font-bold text-emerald-800 mb-6">
+        Make sure to complete all fields
+      </p>
+
       <form
         ref={ref}
         id="inputBlog"
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-6 p-chips"
         action={handleWrappedSubmit}
         // action={addPost}
       >
@@ -66,9 +81,15 @@ export default function InputForm() {
           placeholder="Labels"
           type="text"
         />
+
+        {/* <Chips
+          value={labels}
+          onChange={(e) => setLabels(e.value as string[])}
+          separator=","
+        /> */}
+
         <Editor
           name="desc"
-          // value=""
           placeholder="Write your awesome article here.."
           ref={editorRef}
           onTextChange={(e) => setParaf(e.htmlValue as string)}
