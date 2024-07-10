@@ -22,11 +22,12 @@ export interface IPostDocument extends IPost, Document{
 export interface IInputForm{
     name: string;
     type: string;
-    placeholder: string;
+    placeholder?: string;
     value?: string;
     onChange?: ChangeEventHandler<HTMLInputElement> | any;
     onBlur?:any;
     error?: string;
+    label?: string;
 }
 
 export interface IMessageInput {
