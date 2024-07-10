@@ -1,5 +1,5 @@
 'use client';
-import InputFormComponent from '@/app/components/molecule/inputForm';
+import InputText from '@/app/components/molecule/inputText';
 import { addPost } from '@/lib/data';
 import { IPost } from '@/lib/interfaces';
 import React, { useEffect, useRef, useState } from 'react';
@@ -9,6 +9,7 @@ import { Chips } from 'primereact/chips';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
+import MessageInput from '@/app/components/molecule/messageInput';
 
 export default function InputForm() {
   const ref = useRef<HTMLFormElement>(null);
@@ -76,10 +77,10 @@ export default function InputForm() {
       <form
         ref={ref}
         id="inputBlog"
-        className="flex flex-col gap-5 p-chips"
+        className="flex flex-col gap-8 p-chips"
         onSubmit={formik.handleSubmit}
       >
-        <InputFormComponent
+        <InputText
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.title}
@@ -92,7 +93,7 @@ export default function InputForm() {
               : ''
           }
         />
-        <InputFormComponent
+        <InputText
           onChange={formik.handleChange}
           value={formik.values.header}
           name="header"
@@ -104,7 +105,7 @@ export default function InputForm() {
               : ''
           }
         />
-        <InputFormComponent
+        <InputText
           onChange={formik.handleChange}
           value={formik.values.img}
           name="img"
@@ -114,7 +115,7 @@ export default function InputForm() {
             formik.touched.img && formik.errors.img ? formik.errors.img : ''
           }
         />
-        <InputFormComponent
+        <InputText
           onChange={formik.handleChange}
           value={formik.values.slug}
           name="slug"
@@ -124,7 +125,7 @@ export default function InputForm() {
             formik.touched.slug && formik.errors.slug ? formik.errors.slug : ''
           }
         />
-        <InputFormComponent
+        <InputText
           onChange={formik.handleChange}
           value={formik.values.labels}
           name="labels"
@@ -136,15 +137,16 @@ export default function InputForm() {
               : ''
           }
         />
-        <Editor
-          name="desc"
-          placeholder="Write your awesome article here.."
-          ref={editorRef}
-          onTextChange={(e) => setParaf(e.htmlValue as string)}
-          style={{ height: '460px', fontSize: '16px' }}
-        />
-        {errorForm && <p>Your article is empty..</p>}
-
+        <div className="relative">
+          <Editor
+            name="desc"
+            placeholder="Write your awesome article here.."
+            ref={editorRef}
+            onTextChange={(e) => setParaf(e.htmlValue as string)}
+            style={{ height: '460px', fontSize: '16px' }}
+          />
+          {errorForm && <MessageInput msg="Your article is empty.." />}
+        </div>
         <button
           type="submit"
           className="my-20 mx-auto bg-emerald-800 py-3 px-7 text-slate-100 font-bold text-lg rounded-full"

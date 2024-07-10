@@ -1,7 +1,6 @@
 import React from 'react';
 import TitlePage from '../components/molecule/titlePage';
-import InputForm from '../admin/form/inputForm';
-import InputFormComponent from '../components/molecule/inputForm';
+import InputText from '../components/molecule/inputText';
 
 export default function ContactPage() {
   return (
@@ -18,12 +17,12 @@ export default function ContactPage() {
           action=""
         >
           <h3 className="font-bold text-2xl">Send me a message</h3>
-          <InputFormComponent
+          <InputText
             name="name"
             placeholder="Name"
             type="text"
           />
-          <InputFormComponent
+          <InputText
             name="email"
             placeholder="Email"
             type="text"
