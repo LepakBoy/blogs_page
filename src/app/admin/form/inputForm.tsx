@@ -10,6 +10,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import MessageInput from '@/app/components/molecule/messageInput';
+import FileUploader from '@/app/components/molecule/fileUploader';
 
 export default function InputForm() {
   const ref = useRef<HTMLFormElement>(null);
@@ -17,11 +18,13 @@ export default function InputForm() {
   const [paraf, setParaf] = useState<string>('');
   const [errorForm, setErrorForm] = useState<boolean>(false);
   const [labels, setLabels] = useState<string[]>([]);
+  const [fileName, setFileName] = useState<string>('');
+
+  const fileUploaderRef = useRef<any>(null);
 
   const initialFormValue = {
     title: '',
     header: '',
-    img: '',
     slug: '',
     labels: '',
   };
@@ -29,22 +32,38 @@ export default function InputForm() {
   const validationSchema = Yup.object({
     title: Yup.string().required('Title is required'),
     header: Yup.string().required('Header is required'),
-    img: Yup.string().required('Image is required'),
     slug: Yup.string().required('Slug is required'),
     labels: Yup.string().required('Labels is required'),
   });
 
   const handleWrappedSubmit = (values: typeof initialFormValue) => {
-    // if (Object.keys(formik.errors).length > 1) {
-    //   alert('ksong');
-    //   return;
-    // }
-
     // prevent upload if paragraph is empty
-    if (errorForm) return;
+    if (errorForm) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops...',
+        text: "You haven't write your article",
+      });
+      return;
+    }
+    // prevent upload if image not selected
+    if (!fileName) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Oops...',
+        text: "You haven't select an image!",
+      });
+      return;
+    }
 
-    const post: IPost = { ...values, desc: paraf };
+    const post: IPost = { ...values, desc: paraf, img: fileName };
     addPost(post as IPost);
+
+    // ======= trigger upload file
+    if (fileUploaderRef.current) {
+      fileUploaderRef.current.upload();
+    }
+
     Swal.fire({
       icon: 'success',
       title: 'Your article posted successfully',
@@ -105,16 +124,7 @@ export default function InputForm() {
               : ''
           }
         />
-        <InputText
-          onChange={formik.handleChange}
-          value={formik.values.img}
-          name="img"
-          placeholder="Image name"
-          type="text"
-          error={
-            formik.touched.img && formik.errors.img ? formik.errors.img : ''
-          }
-        />
+
         <InputText
           onChange={formik.handleChange}
           value={formik.values.slug}
@@ -137,6 +147,12 @@ export default function InputForm() {
               : ''
           }
         />
+        <div>
+          <FileUploader
+            setFileName={setFileName}
+            ref={fileUploaderRef}
+          />
+        </div>
         <div className="relative">
           <Editor
             name="desc"

@@ -10,7 +10,7 @@ interface IBlogCardProps extends IPost {
 
 export default function BlogCard(props: IBlogCardProps) {
   const backgroundImageStyle = {
-    backgroundImage: `url('/images${props.img}')`,
+    backgroundImage: `url('/images/${props.img}')`,
   };
 
   return (

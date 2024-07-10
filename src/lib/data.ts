@@ -33,7 +33,7 @@ export const addPost = async (formData: IPost) => {
         connectToDb();
 
         const newPost = new Post({
-            title, header, desc, img, slug, labels:[labels]
+            title, header, desc, img, slug, labels
         })
 
         await newPost.save();
