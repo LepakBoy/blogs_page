@@ -1,0 +1,13 @@
+.content img{
+    margin: 36px auto;
+    max-height: 382px;
+}
+
+.content a{
+    font-size: 12px;
+    text-align: center !important;
+    
+    font-weight: 600;
+    margin: 0 auto;
+}
+

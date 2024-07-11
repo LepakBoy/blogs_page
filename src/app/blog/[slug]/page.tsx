@@ -4,6 +4,7 @@ import moment from 'moment';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import styles from './pageSlug.module.css';
 
 const getData = async (slug: string) => {
   const res = getPostBySlug(slug);
@@ -39,15 +40,16 @@ export default async function SingleBlogPage({
         {post?.header}
       </h4>
       <Image
-        className="mx-auto w-full md:w-3/4"
-        src={`/images${post?.img}`}
+        className="mx-auto w-full md:w-3/4 max-h-96"
+        src={`/images/${post?.img}`}
         height={200}
         width={200}
         alt="blog_image"
       />
       <div className="text-base md:text-lg md:w-3/4 mx-auto my-20 md:my-32">
+        {/* {post?.desc} */}
         <div
-          className="first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3"
+          className={`${styles.content} first-letter:text-7xl first-letter:float-left first-letter:font-extrabold first-letter:mr-3`}
           dangerouslySetInnerHTML={{ __html: post?.desc as string }}
         />
       </div>
