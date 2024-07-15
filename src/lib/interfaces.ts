@@ -7,7 +7,7 @@ export interface IPost{
     desc: string,
     img: string,
     slug: string,
-    labels:  string,
+    labels:  string[],
     createdAt?: Date,
     datePost?: Date
 }
@@ -16,6 +16,18 @@ export interface IPost{
 export interface IPostDocument extends IPost, Document{
     createdAt: Date,
     updatedAt: Date
+}
+
+export interface IUser {
+    username: string;
+    email: string;
+    password:string;
+    role: String;
+}
+
+export interface IUserDocument extends IUser, Document{
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 

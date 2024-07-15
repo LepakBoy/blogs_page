@@ -56,7 +56,12 @@ export default function InputForm() {
       return;
     }
 
-    const post: IPost = { ...values, desc: paraf, img: fileName };
+    const post: IPost = {
+      ...values,
+      desc: paraf,
+      img: fileName,
+      labels: labels,
+    };
     addPost(post as IPost);
 
     // ======= trigger upload file

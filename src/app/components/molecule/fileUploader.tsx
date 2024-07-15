@@ -17,8 +17,21 @@ interface FileUploaderProps {
   ref: any;
 }
 
+const fileAcceptType = ['jpg', 'jpeg', 'png'];
+
+const checkFileType = (type: string) => {
+  const extension = type.split('.')[1];
+
+  console.log(extension, 'ext');
+  if (!fileAcceptType.includes(extension.toLocaleLowerCase())) {
+    alert('gagal');
+    return true;
+  }
+};
+
 const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
   const toast = useRef<Toast>(null);
+  const maxSizeFile = 600000;
   const [totalSize, setTotalSize] = useState(0);
   const fileUploadRef = useRef<FileUpload>(null);
 
@@ -34,7 +47,12 @@ const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
     let _totalSize = totalSize;
     let files = e.files;
 
-    props.setFileName(e.files[0].name);
+    console.log(e, 'eeee');
+    if (checkFileType(e.files[0].name)) return;
+
+    if (totalSize > maxSizeFile) return;
+
+    props.setFileName(e.files[0]?.name);
 
     Object.keys(files).forEach((key) => {
       _totalSize += files[key].size || 0;
@@ -190,18 +208,12 @@ const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
 
   return (
     <div className="relative">
-      <Toast ref={toast}></Toast>
-
+      <Toast ref={toast} />
       <Tooltip
         target=".custom-choose-btn"
         content="Choose"
         position="bottom"
       />
-      {/* <Tooltip
-        target=".custom-upload-btn"
-        content="Upload"
-        position="bottom"
-      /> */}
       <Tooltip
         target=".custom-cancel-btn"
         content="Clear"
@@ -212,9 +224,9 @@ const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
         ref={fileUploadRef}
         name="file"
         url="/api/upload"
-        multiple
         accept="image/*"
-        maxFileSize={1000000}
+        multiple={false}
+        maxFileSize={600000}
         onUpload={onTemplateUpload}
         onSelect={onTemplateSelect}
         onError={onTemplateClear}
