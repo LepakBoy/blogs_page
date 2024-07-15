@@ -18,7 +18,6 @@ export default async function SingleBlogPage({
 }) {
   const { slug } = params;
   const post = await getData(slug);
-  // console.log(post, 'poost');
 
   return (
     <section className="pb-20">
