@@ -8,6 +8,8 @@ import FooterLink from './components/footerLink/footerLink';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import { PrimeReactProvider } from 'primereact/api';
+// import { SessionProvider } from 'next-auth/react';
+import SessionProvider from '../components/SessionProviders';
 
 const libre = Libre_Franklin({ subsets: ['latin'] });
 
@@ -24,14 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <PrimeReactProvider>
-        <body className={libre.className}>
-          <Navbar />
-          <div className="container">
-            {children}
-            <FooterLink />
-          </div>
-          <Footer />
-        </body>
+        <SessionProvider>
+          <body className={libre.className}>
+            <Navbar />
+            <div className="container">
+              {children}
+              <FooterLink />
+            </div>
+            <Footer />
+          </body>
+        </SessionProvider>
       </PrimeReactProvider>
     </html>
   );
