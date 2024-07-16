@@ -6,8 +6,6 @@ export const login = async (formData: FormData) => {
 
     try {
       await signIn('credentials', { email, password})
-      //   alert('ok');
-      // return router.push('/admin');
     } catch (error) {
       console.log(error);
       // if (error?.message?.includes('CredentialsSignin')) {
