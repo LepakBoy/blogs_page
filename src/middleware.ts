@@ -27,7 +27,10 @@ export async function middleware(req: NextRequest) {
   
 	// ONLY UNAUTHENTICATED USER CAN REACH LOGIN PAGE
 	if (isOnLoginPage && token) {
-	  return NextResponse.redirect(new URL('/', req.url)); // Redirect to home page
+	//   return NextResponse.redirect(new URL('/', req.url)); 
+	  // Redirect to home page
+
+	  return Response.redirect(new URL("/", req.nextUrl))
 	}
 
   
