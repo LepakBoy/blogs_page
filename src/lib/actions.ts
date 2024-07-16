@@ -7,20 +7,28 @@ export const login = async (formData: FormData) => {
     try {
       await signIn('credentials', { email, password})
     } catch (error) {
-      console.log(error);
+      console.log(error, "error login");
       // if (error?.message?.includes('CredentialsSignin')) {
       //     return { error: 'Invalid username or password' };
       //   }
-      //   throw error;
+        throw error;
     }
   };
 
   export const handleLogout = async () => {
-    // "use server"
     Swal.fire({
         icon:"question",
-        text:"Are you sure want to logout?"
-    }).then(() => {
-        signOut()
+        text:"Are you sure want to logout?",
+        cancelButtonText:"cancel",
+        showCancelButton: true
+    }).then((res) => {
+      if(res.isConfirmed){
+        Swal.fire({
+          icon:"success",
+          text:"You're loged out"
+        }).then(() => {
+          signOut()
+        })
+      }
     })
   }
