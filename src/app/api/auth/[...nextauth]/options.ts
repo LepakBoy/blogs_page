@@ -15,7 +15,7 @@ export const options = {
     secret: process.env.AUTH_SECRET,
     providers: [
         CredentialsProvider({
-            name:"credentials",
+            name: "Credentials",
             credentials: {
             email:{},
             password:{}

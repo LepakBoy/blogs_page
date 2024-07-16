@@ -10,7 +10,7 @@ export const connectToDb = async () => {
 
     try{
      
-        const db = await mongoose.connect("mongodb://localhost:27017/blogs");
+        const db = await mongoose.connect(process.env.MONGO as string);
         connection =  db.connection;
 
         console.log("connect to DB");

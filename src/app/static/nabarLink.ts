@@ -3,6 +3,5 @@ export const navLinks = [
     {name:"Blogs", link:"/blog"},
     {name:"Contact", link:"/contact"},
     {name:"Write Article", link:"/admin"},
-    {name:"Login", link:"/login"},
 ]
 
