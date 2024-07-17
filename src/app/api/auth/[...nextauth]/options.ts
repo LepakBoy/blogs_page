@@ -1,10 +1,11 @@
 
 import { connectToDb } from "@/lib/utils";
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { Session, User } from "next-auth";
+import { Account, Profile, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { User as UserSchemaModel } from "@/lib/models";
 import Swal from "sweetalert2";
+import Github from "next-auth/providers/github";
 
 export const options = {
     session: {
@@ -15,7 +16,10 @@ export const options = {
         signIn: "/login"
     },
     secret: process.env.AUTH_SECRET,
-    providers: [
+    providers: [Github({
+        clientId: process.env.AUTH_GITHUB_ID as string,
+        clientSecret: process.env.AUTH_GITHUB_SECRET as string
+    }),
         CredentialsProvider({
             name: "Credentials",
             credentials: {
@@ -55,6 +59,30 @@ export const options = {
           }
         })
     ], callbacks: {
+        async signIn({account, profile} : {account: Account, profile: Profile}){
+            if(account?.provider === "github"){
+                await connectToDb()
+
+                try {
+                    const user = await UserSchemaModel.findOne({email: profile?.email})
+
+                    if(!user){
+                    const newUser = await UserSchemaModel.create({
+                        username : profile?.username,
+                        email: profile?.email,
+
+                    })
+
+                    await newUser.save()
+                }
+                return true
+
+                } catch (error) {
+                    console.log(error)
+                    return false
+                }
+            }
+        },
    
         async jwt({token,user}: {token: JWT, user: User}): Promise<JWT>{
 
