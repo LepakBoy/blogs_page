@@ -4,10 +4,12 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { User as UserSchemaModel } from "@/lib/models";
+import Swal from "sweetalert2";
 
 export const options = {
     session: {
-        strategy:"jwt"
+        strategy:"jwt",
+        // maxAge: 30 * 24 * 60 * 60
     },
     pages: {
         signIn: "/login"
@@ -30,28 +32,24 @@ export const options = {
                 }
                 const {email, password} = credentials;
                 const user = await UserSchemaModel.findOne({email});
-                // const passCorrect = user?.password === password
-                // if(!passCorrect){
-                //     throw new Error("wrong credential")
-                // }
-           
-
-                // Response.redirect("http://localhost:3000/admin")
-                // if(user){
-                // const isVisitingAuthPage = req.nextUrl.pathname.startsWith("/login") || req.nextUrl.pathname.startsWith("/signup")
-
-           
-    
-                // if user authenticated and try to visit auth page => redirect to chat page
-                // if(user && isVisitingAuthPage){
-                //     return Response.redirect(new URL("/admin", req.nextUrl))
-                // }
+                const passCorrect = user?.password === password
+                if(!passCorrect){
+                    Swal.fire({
+                        icon:"error",
+                        text:"Invalid password or email"
+                    })
+                    throw new Error("wrong credential")
+                }
 
                 return user
 
 
             } catch (error) {
-                console.log(error)
+                Swal.fire({
+                    icon:"error",
+                    text:"ee"
+                })
+                console.log(error, "error option login")
                 return null
             }
           }

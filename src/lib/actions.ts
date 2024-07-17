@@ -11,6 +11,9 @@ export const login = async (formData: FormData) => {
       // if (error?.message?.includes('CredentialsSignin')) {
       //     return { error: 'Invalid username or password' };
       //   }
+      Swal.fire({
+        icon:"error"
+      })
         throw error;
     }
   };
