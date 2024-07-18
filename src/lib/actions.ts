@@ -38,7 +38,8 @@ export const login = async (formData: FormData) => {
       if(res.isConfirmed){
         Swal.fire({
           icon:"success",
-          text:"You're loged out"
+          text:"You're loged out",
+          timer:1000
         }).then(() => {
           signOut()
         })

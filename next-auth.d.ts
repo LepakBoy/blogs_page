@@ -28,6 +28,8 @@ declare module "next-auth"{
     interface Profile {
         username: string;
         email: string;
+        id: string;
+        login: string
     }
 }
 

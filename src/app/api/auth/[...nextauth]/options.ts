@@ -1,4 +1,3 @@
-
 import { connectToDb } from "@/lib/utils";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { Account, Profile, Session, User } from "next-auth";
@@ -47,7 +46,6 @@ export const options = {
 
                 return user
 
-
             } catch (error) {
                 Swal.fire({
                     icon:"error",
@@ -59,7 +57,7 @@ export const options = {
           }
         })
     ], callbacks: {
-        async signIn({account, profile} : {account: any, profile: any}){
+        async signIn({account, profile} : {account: Account, profile: Profile}){
             if(account?.provider === "github"){
                 await connectToDb()
                 try {
