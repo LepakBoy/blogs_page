@@ -59,18 +59,16 @@ export const options = {
           }
         })
     ], callbacks: {
-        async signIn({account, profile} : {account: Account, profile: Profile}){
+        async signIn({account, profile} : {account: any, profile: any}){
             if(account?.provider === "github"){
                 await connectToDb()
-
                 try {
                     const user = await UserSchemaModel.findOne({email: profile?.email})
-
                     if(!user){
                     const newUser = await UserSchemaModel.create({
-                        username : profile?.username,
+                        username : profile?.login,
                         email: profile?.email,
-
+                        id: profile?.id
                     })
 
                     await newUser.save()

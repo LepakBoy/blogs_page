@@ -6,8 +6,8 @@ import {
 } from '../../../public/svgs';
 
 export const credentialsList = [
-  { name: 'Github', icon: <GithubIcon />, credentials: 'github' },
-  { name: 'Google', icon: <GmalIcon />, credentials: 'google' },
-  { name: 'Discord', icon: <DiscordIcon />, credentials: 'discord' },
-  { name: 'AppleId', icon: <AppleIcon />, credentials: 'apple' },
+  { name: 'Github', icon: <GithubIcon />, provider: 'github' },
+  { name: 'Google', icon: <GmalIcon />, provider: 'google' },
+  { name: 'Discord', icon: <DiscordIcon />, provider: 'discord' },
+  { name: 'AppleId', icon: <AppleIcon />, provider: 'apple' },
 ];

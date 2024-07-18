@@ -9,7 +9,7 @@ export default function ButtonsGroup() {
         <ButtonSignUp
           key={list.name}
           name={list.name}
-          credential={list.credentials}
+          provider={list.provider}
           icon={list.icon}
         />
       ))}

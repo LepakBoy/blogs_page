@@ -18,6 +18,16 @@ export const login = async (formData: FormData) => {
     }
   };
 
+  export const loginProviders = async (provider: string) => {
+
+        try {
+          // only github for the moment
+            await signIn("github");
+        } catch (error) {
+          console.log(error, 'error gitnub');
+        }
+  };
+
   export const handleLogout = async () => {
     Swal.fire({
         icon:"question",
