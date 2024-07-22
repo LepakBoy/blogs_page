@@ -34,7 +34,7 @@ export default async function () {
           </Link>
         </h3>
       </div>
-      <section className="grid md:grid-cols-2 gap-6">
+      <section className="grid max-w-[1024px] mx-auto md:grid-cols-2 gap-6">
         {posts.map((post) => (
           <BlogCard
             title={post.title}

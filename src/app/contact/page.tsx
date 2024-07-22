@@ -7,13 +7,13 @@ export default function ContactPage() {
     <div>
       <TitlePage title="Contact" />
       <div>
-        <h2 className="w-3/4 font-semibold text-center mx-auto">
+        <h2 className="md:w-1/3 w-3/4 font-semibold text-center mx-auto">
           If you have any questions, need further information, or just want to
           connect, please don't hesitate to contact me. I'm always happy to help
           and look forward to hearing from you!
         </h2>
         <form
-          className="flex flex-col gap-7 py-7 md:w-3/4 mx-auto"
+          className="flex flex-col gap-7 py-7 w-3/4 md:w-1/3 mx-auto"
           action=""
         >
           <h3 className="font-bold text-2xl">Send me a message</h3>

@@ -31,7 +31,7 @@ export default function LoginForm() {
       <form
         // action={login}
         onSubmit={formik.handleSubmit}
-        className="flex w-1/3 flex-col gap-8"
+        className="flex w-3/4 md:w-1/3 flex-col gap-8"
       >
         <h2 className="text-3xl text-emerald-800 font-bold">Login</h2>
         <p className="font-semibold">
