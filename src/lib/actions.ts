@@ -1,8 +1,9 @@
 import { signIn, signOut } from "next-auth/react";
 import Swal from "sweetalert2";
 
-export const login = async (formData: FormData) => {
-    const { email, password } = Object.fromEntries(formData);
+export const login = async (formData: {email: string, password: string}) => {
+    // const { email, password } = Object.fromEntries(formData);
+    const {email, password} = formData
 
     try {
       await signIn('credentials', { email, password})
@@ -38,7 +39,8 @@ export const login = async (formData: FormData) => {
         Swal.fire({
           icon:"success",
           text:"You're loged out",
-          timer:1000
+          timer:1000,
+          showConfirmButton: false
         }).then(() => {
           signOut()
         })

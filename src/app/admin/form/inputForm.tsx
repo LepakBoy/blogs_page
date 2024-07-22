@@ -85,11 +85,8 @@ export default function InputForm() {
   });
 
   useEffect(() => {
-    if (!paraf) {
-      setErrorForm(true);
-    } else {
-      setErrorForm(false);
-    }
+    if (!paraf) setErrorForm(true);
+    setErrorForm(false);
   }, [paraf]);
 
   return (
