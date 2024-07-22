@@ -19,10 +19,9 @@ export const login = async (formData: FormData) => {
   };
 
   export const loginProviders = async (provider: string) => {
-
         try {
           // only github for the moment
-            await signIn("github");
+            await signIn(provider);
         } catch (error) {
           console.log(error, 'error gitnub');
         }

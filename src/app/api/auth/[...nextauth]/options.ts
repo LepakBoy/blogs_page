@@ -1,5 +1,6 @@
 import { connectToDb } from "@/lib/utils";
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from "next-auth/providers/google"
 import { Account, Profile, Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { User as UserSchemaModel } from "@/lib/models";
@@ -18,6 +19,10 @@ export const options = {
     providers: [Github({
         clientId: process.env.AUTH_GITHUB_ID as string,
         clientSecret: process.env.AUTH_GITHUB_SECRET as string
+    }),
+    GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID as string,
+        clientSecret: process.env.GOOGLE_SECRET as string,
     }),
         CredentialsProvider({
             name: "Credentials",
@@ -78,6 +83,10 @@ export const options = {
                     return false
                 }
             }
+            if(account?.provider === "google"){
+                return profile.email_verified
+            }
+            return true
         },
    
         async jwt({token,user}: {token: JWT, user: User}): Promise<JWT>{

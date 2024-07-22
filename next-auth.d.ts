@@ -29,7 +29,8 @@ declare module "next-auth"{
         username: string;
         email: string;
         id: string;
-        login: string
+        login: string;
+        email_verified: string;
     }
 }
 
