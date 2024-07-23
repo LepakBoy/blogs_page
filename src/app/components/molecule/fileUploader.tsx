@@ -14,26 +14,27 @@ import MessageInput from './messageInput';
 
 interface FileUploaderProps {
   setFileName: (name: string) => void;
+  // setErrorForm: (error: string) => void;
   ref: any;
 }
 
 const fileAcceptType = ['jpg', 'jpeg', 'png'];
-
-const checkFileType = (type: string) => {
-  const extension = type.split('.')[1];
-
-  console.log(extension, 'ext');
-  if (!fileAcceptType.includes(extension.toLocaleLowerCase())) {
-    alert('gagal');
-    return true;
-  }
-};
 
 const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
   const toast = useRef<Toast>(null);
   const maxSizeFile = 600000;
   const [totalSize, setTotalSize] = useState(0);
   const fileUploadRef = useRef<FileUpload>(null);
+
+  const checkFileType = (type: string) => {
+    const extension = type.split('.')[1]?.toLocaleLowerCase();
+    if (!extension || !fileAcceptType.includes(extension.toLocaleLowerCase())) {
+      props.setFileName('');
+      return true;
+    }
+
+    return false;
+  };
 
   useImperativeHandle(ref, () => ({
     upload: () => {
@@ -47,10 +48,15 @@ const FileUploader = forwardRef((props: FileUploaderProps, ref) => {
     let _totalSize = totalSize;
     let files = e.files;
 
-    console.log(e, 'eeee');
-    if (checkFileType(e.files[0].name)) return;
+    if (e.files[0] && checkFileType(e.files[0].name)) {
+      props.setFileName('');
+      return;
+    }
 
-    if (totalSize > maxSizeFile) return;
+    if (totalSize > maxSizeFile) {
+      setTotalSize(0);
+      return;
+    }
 
     props.setFileName(e.files[0]?.name);
 
