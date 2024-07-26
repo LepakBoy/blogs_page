@@ -1,6 +1,8 @@
 
 A simple blog web page that allows authenticated users to write and publish their posts. On this page, users can include an image in their posts. The authentication system uses NextAuth, enabling users to authenticate with their Gmail or GitHub accounts. For blog storage, it uses MongoDB and the Mongoose ODM to facilitate development and database communication.
 
+Several features will be added to this website, including the ability to edit and delete blog posts, more authentication options, and an updated homepage design to make it more appealing.
+
 Here's a part of the blog page layout:
 
 
